@@ -21,6 +21,8 @@ const administratorSchema = new Schema({
   resetTokenExpiryDate:{
     type: Date
   }
+},{
+  timestamps: true
 });
 
 export default mongoose.model('Administrator', administratorSchema);
