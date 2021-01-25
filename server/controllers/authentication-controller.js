@@ -8,8 +8,6 @@ import Administrator from '../models/administrator.js';
 
 import TicketCollector from '../models/ticket-collector.js';
 
-import MinimumRequirements from '../models/minimum-requirements.js';
-
 //helpers
 import {userSignUpUsingPhone} from '../helpers/ticket-collector-signup-phone.js';
 
