@@ -21,7 +21,7 @@ const port = process.env.PORT || 3300;
 const app = express();
 
 // All routes imported here
-// import authenticationRoutes from './routes/authentication-routes.js';
+import authenticationRoutes from './routes/authentication-routes.js';
 
 
 const fileStorage = multer.diskStorage({
@@ -64,7 +64,7 @@ app.use((req, res, next) => {
 });
 
 //Entry point for routes
-// app.use('/auth', authenticationRoutes);
+app.use('/auth', authenticationRoutes);
 
 
 app.use(helmet());

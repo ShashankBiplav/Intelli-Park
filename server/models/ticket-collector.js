@@ -5,15 +5,17 @@ const Schema = mongoose.Schema;
 const ticketCollectorSchema = new Schema({
   name:{
     type: String,
-    required: true
+    default: null
   },
   email:{
     type: String,
-    required: true
+    default: null
+  
   },
   password:{
     type: String,
-    required: true
+    default: null
+  
   },
   phone: {
     type: Number,

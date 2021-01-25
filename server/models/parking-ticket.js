@@ -14,6 +14,10 @@ const parkingTicketSchema = new Schema({
   endingTime:{
     type: Date,
   },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   amount:{
     type: Number,
     default: 0
