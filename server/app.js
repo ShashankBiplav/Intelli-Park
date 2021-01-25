@@ -23,6 +23,7 @@ const app = express();
 // All routes imported here
 import authenticationRoutes from './routes/authentication-routes.js';
 
+import ticketCollectorRoutes from './routes/ticket-collector-routes.js';
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -66,6 +67,7 @@ app.use((req, res, next) => {
 //Entry point for routes
 app.use('/auth', authenticationRoutes);
 
+app.use('/ticket-collector',ticketCollectorRoutes);
 
 app.use(helmet());
 

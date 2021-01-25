@@ -29,21 +29,21 @@ const parkingTicketSchema = new Schema({
   createdBy:{
     _id: {
       type: Schema.Types.ObjectId,
-      ref: 'TicketCollector'
+      ref: 'TicketCollector',
     },
-    name: {
-      type: String,
-      required: true
+    phone: {
+      type: Number,
     },
   },
   collectedBy:{
     _id: {
       type: Schema.Types.ObjectId,
-      ref: 'TicketCollector'
+      ref: 'TicketCollector',
+      default: null
     },
-    name: {
-      type: String,
-      required: true
+    phone: {
+      type: Number,
+      default: null
     },
   }
 },{
