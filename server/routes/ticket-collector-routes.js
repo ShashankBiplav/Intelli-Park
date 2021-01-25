@@ -14,4 +14,7 @@ router.post('/create-ticket', isTicketCollector, [
   expressValidator.check('amount').not().isEmpty()
 ], ticketCollectorController.createNewParkingTicket);
 
+//END EXISTING TICKET
+router.put('/end-ticket/:ticketId', isTicketCollector, ticketCollectorController.endParkingTicket);
+
 export default router;
