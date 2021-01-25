@@ -16,9 +16,23 @@ const parkingTicketSchema = new Schema({
   },
   amount:{
     type: Number,
-    required: true
+    default: 0
   },
-  ticketCollector:{
+  isAmountCollected:{
+    type: Boolean,
+    default: false
+  },
+  createdBy:{
+    _id: {
+      type: Schema.Types.ObjectId,
+      ref: 'TicketCollector'
+    },
+    name: {
+      type: String,
+      required: true
+    },
+  },
+  collectedBy:{
     _id: {
       type: Schema.Types.ObjectId,
       ref: 'TicketCollector'
