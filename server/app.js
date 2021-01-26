@@ -25,6 +25,8 @@ import authenticationRoutes from './routes/authentication-routes.js';
 
 import ticketCollectorRoutes from './routes/ticket-collector-routes.js';
 
+import administratorRoutes from './routes/administrator-routes.js';
+
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'images');
@@ -68,6 +70,8 @@ app.use((req, res, next) => {
 app.use('/auth', authenticationRoutes);
 
 app.use('/ticket-collector',ticketCollectorRoutes);
+
+app.use('/administrator',administratorRoutes);
 
 app.use(helmet());
 

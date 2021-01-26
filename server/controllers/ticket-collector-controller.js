@@ -62,6 +62,7 @@ export const endParkingTicket = async (req, res, next) => {
     }
     parkingTicket.isAmountCollected = true;
     parkingTicket.isActive = false;
+    parkingTicket.endingTime = new Date().toISOString();
     parkingTicket.collectedBy = {_id: ticketCollector._id, phone: ticketCollector.phone};
     const result = await parkingTicket.save();
     res.status(201).json({
