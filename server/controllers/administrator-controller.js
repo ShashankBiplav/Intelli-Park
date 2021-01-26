@@ -40,6 +40,22 @@ export const getAllParkingTickets = async(req, res, next) => {
   }
 };
 
+// get all ticket collectors
+export const getAllTicketCollectors = async(req, res, next) => {
+  try{
+    const ticketCollectors =await TicketCollector.find({},{otp:0, password:0}, {sort:{createdAt: -1}});
+    res.status(200).json({
+      message: 'All Ticket Collectors fetched',
+      ticketCollectors: ticketCollectors,
+    });
+  }catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 //create new minimum requirements
 export const createNewMinimumRequirement = async (req, res, next) => {
   validationErrorHandler(req, next);

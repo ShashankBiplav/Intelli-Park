@@ -8,6 +8,9 @@ import {isAdmin} from '../middleware/is-admin.js';
 
 const router = express.Router();
 
+//GET ALL TICKET COLLECTORS
+router.get('/ticket-collectors',isAdmin, administratorController.getAllTicketCollectors);
+
 //GET ALL AND PAGINATED +FILTERED TICKETS
 router.post('/tickets', isAdmin, administratorController.getAllParkingTickets);
 
