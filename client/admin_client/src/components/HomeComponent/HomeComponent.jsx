@@ -5,7 +5,7 @@ import ParkingTicketsComponent from "../ParkingTicketsComponent/ParkingTicketsCo
 
 function HomeComponent() {
   
-  const {user} = useContext(UserContext);
+  const {user,setUser} = useContext(UserContext);
   
   return (
     <div className="">

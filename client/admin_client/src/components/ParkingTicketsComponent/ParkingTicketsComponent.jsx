@@ -1,7 +1,7 @@
 
 
 function ParkingTicketsComponent () {
-  return (<div> </div>);
+  return (<div> Parking tickets Component</div>);
 }
 
 export default ParkingTicketsComponent;

@@ -9,7 +9,11 @@ function App() {
     isAuth: false,
     token: undefined,
     user: undefined,
-    expiryTime: undefined
+    expiryTime: undefined,
+    isLoginPage: true,
+    isAllTicketsPage:false,
+    isNewTicketPage:false,
+    isTicketCollectorComponent: false,
   });
   useEffect(() => {
     //TODO: set timer in this function
