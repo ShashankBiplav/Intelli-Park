@@ -17,4 +17,7 @@ router.post('/create-ticket', isTicketCollector, [
 //END EXISTING TICKET
 router.put('/end-ticket/:ticketId', isTicketCollector, ticketCollectorController.endParkingTicket);
 
+//GET ALL AND PAGINATED +FILTERED TICKETS
+router.post('/tickets', isTicketCollector, ticketCollectorController.getParkingTickets);
+
 export default router;

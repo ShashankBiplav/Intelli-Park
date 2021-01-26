@@ -7,6 +7,10 @@ const minimumRequirementsSchema = new Schema({
     type: Number,
     default: 10
   },
+  min2WheelerPerMinute:{
+    type: Number,
+    default: 0.1
+  },
   min4WheelerHourly:{
     type: Number,
     default: 25

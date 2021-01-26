@@ -76,3 +76,41 @@ export const endParkingTicket = async (req, res, next) => {
     next(err);
   }
 };
+
+//get all parking tickets
+export const getParkingTickets = async(req, res, next) => {
+  try{
+    let {fromDate, toDate} = req.body;
+    const skip = parseInt(req.body.skip);
+    const limit = parseInt(req.body.limit);
+    let filter;
+    const ticketCollector = await TicketCollector.findById(req.userId);
+    if (ticketCollector.isVerified === false || ticketCollector.isAuthorized === false){
+      const error = new Error('Not Authorized');
+      error.statusCode = 403;
+      return next(error);
+    }
+    const parkingTicketsCount = await ParkingTicket.find().countDocuments();
+    if (!fromDate || !toDate) {
+      const parkingTickets = await ParkingTicket.find().sort({createdAt: -1}).skip(skip).limit(limit);
+      res.status(200).json({
+        message: 'All parking tickets fetched',
+        parkingTickets: parkingTickets,
+        total: parkingTicketsCount
+      });
+      return;
+    }
+    filter = {createdAt: {$gte: fromDate, $lte: toDate}};
+    const parkingTickets = await ParkingTicket.find(filter).sort({createdAt: -1}).skip(skip).limit(limit);
+    res.status(200).json({
+      message: 'Filtered parking tickets fetched',
+      parkingTickets: parkingTickets,
+      total: parkingTicketsCount
+    });
+  }catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};

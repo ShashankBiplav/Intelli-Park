@@ -7,6 +7,10 @@ const parkingTicketSchema = new Schema({
     type: String,
     required: true
   },
+  vehicleType:{
+    type: Number,
+    default: 2
+  },
   startingTime:{
     type: Date,
     required: true

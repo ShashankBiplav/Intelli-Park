@@ -10,7 +10,7 @@ import multer from 'multer';
 import dotenv from 'dotenv';
 
 //CRON JOBS
-
+import {checkAndIncreaseActiveTicketsPrice} from './helpers/cron/auto-price-incrementor.js';
 
 //TODO:disable in production
 dotenv.config();
@@ -89,7 +89,7 @@ app.use((error, req, res, next) => {
 });
 
 //CRON execution
-
+checkAndIncreaseActiveTicketsPrice();
 
 //mongo db connection
 mongoose
