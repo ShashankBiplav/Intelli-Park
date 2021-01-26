@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import {validationErrorHandler} from './validation-error-handler.js';
+import {checkTimeValidity} from "./check-time.js";
 
 export const login = async (req, res, next, Model) => {
   validationErrorHandler(req, next);
@@ -12,6 +13,12 @@ export const login = async (req, res, next, Model) => {
     const user = await Model.findOne({phone: phone, otp: otp});
     if (user.isAuthorized ===false){
       const error = new Error('Not Authorized! Contact Admin for support');
+      error.statusCode = 403;
+      return next(error);
+    }
+    const isTimeValid =  await checkTimeValidity();
+    if (!isTimeValid){
+      const error = new Error('Invalid time');
       error.statusCode = 403;
       return next(error);
     }

@@ -1,12 +1,12 @@
 //models
-import MinimumRequirement from '../models/minimum-requirements.js';
-
 import ParkingTicket from '../models/parking-ticket.js';
 
 import TicketCollector from '../models/ticket-collector.js';
 
 //helper functions
 import {validationErrorHandler} from '../helpers/validation-error-handler.js';
+
+import {checkTimeValidity} from '../helpers/check-time.js';
 
 //create a new ticket
 export const createNewParkingTicket = async (req, res, next) => {
@@ -16,6 +16,12 @@ export const createNewParkingTicket = async (req, res, next) => {
     const ticketCollector = await TicketCollector.findById(req.userId);
     if (ticketCollector.isVerified === false || ticketCollector.isAuthorized === false){
       const error = new Error('Not Authorized');
+      error.statusCode = 403;
+      return next(error);
+    }
+    const isTimeValid =  await checkTimeValidity();
+    if (!isTimeValid){
+      const error = new Error('Invalid time');
       error.statusCode = 403;
       return next(error);
     }
