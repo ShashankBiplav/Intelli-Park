@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
-import HomeComponent from "./components/HomeComponent/HomeComponent";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
@@ -11,7 +10,7 @@ import LoginComponent from "./components/LoginComponent/LoginComponent";
 
 function App() {
   const [user, setUser] = useState({
-    isAuth: true,
+    isAuth: false,
     token: undefined,
     user: undefined,
     expiryTime: undefined,
