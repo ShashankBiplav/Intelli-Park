@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div >
+    <div className="bg-blue-primary">
       Ticket Collector
     </div>
   );
