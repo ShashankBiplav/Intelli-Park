@@ -3,17 +3,18 @@ import {BrowserRouter, Switch, Route} from "react-router-dom";
 import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import HomeComponent from "./components/HomeComponent/HomeComponent";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
+import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
+import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
+import LoginComponent from "./components/LoginComponent/LoginComponent";
 
 function App() {
   const [user, setUser] = useState({
-    isAuth: false,
+    isAuth: true,
     token: undefined,
     user: undefined,
     expiryTime: undefined,
-    isLoginPage: true,
-    isAllTicketsPage:false,
-    isNewTicketPage:false,
-    isTicketCollectorComponent: false,
   });
   useEffect(() => {
     //TODO: set timer in this function
@@ -69,9 +70,13 @@ function App() {
     <>
     <BrowserRouter>
       <UserContext.Provider value={{user, setUser, logOut}}>
-        <Navbar />
+      <Navbar />
         <Switch>
-          <Route exact path="/" component={HomeComponent} />
+          <Route exact path="/login" component={LoginComponent}/>
+          <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
+          <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
+          <ProtectedRoute exact path="/" component={AllTicketsComponent} />
+          <Route path="*" component={<h1>Page Not found</h1>}/>
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>
