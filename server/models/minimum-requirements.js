@@ -15,6 +15,10 @@ const minimumRequirementsSchema = new Schema({
     type: Number,
     default: 25
   },
+  min4WheelerPerMinute:{
+    type: Number,
+    default: 0.2
+  },
   collectionStartHour:{
     type: Number,
     default: 9
