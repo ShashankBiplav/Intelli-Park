@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
@@ -69,11 +70,14 @@ function App() {
       <UserContext.Provider value={{user, setUser, logOut}}>
         <BrowserRouter>
           <Navbar/>
+          <div className="flex flex-col h-screen justify-between">
           <Switch>
             <Route exact path="/" component={AllTicketsComponent}/>
             <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
             <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
           </Switch>
+          <Footer />
+          </div>
         </BrowserRouter>
       </UserContext.Provider>
     </>
