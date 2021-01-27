@@ -22,7 +22,7 @@ function App() {
       let token = localStorage.getItem("auth-token");
       //check for the expiredTime in localStorage
       let expTime = localStorage.getItem("exp-time");
-      if (token === null || expTime === null || expTime==="") {
+      if (token === null || expTime === null || expTime === "") {
         //if no token key found, set it to an empty string
         localStorage.setItem("auth-token", "");
         localStorage.setItem("exp-time", "");
@@ -67,19 +67,17 @@ function App() {
   
   return (
     <>
-    <BrowserRouter>
       <UserContext.Provider value={{user, setUser, logOut}}>
-      <Navbar />
-        <Switch>
-          <Route exact path="/login" component={LoginComponent}/>
-          <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
-          <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
-          <ProtectedRoute exact path="/" component={AllTicketsComponent} />
-          <Route path="*" component={<h1>Page Not found</h1>}/>
-        </Switch>
+        <BrowserRouter>
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={AllTicketsComponent}/>
+            <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
+            <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
+          </Switch>
+        </BrowserRouter>
       </UserContext.Provider>
-    </BrowserRouter>
-</>
+    </>
   );
 }
 
