@@ -46,7 +46,7 @@ function Navbar() {
           </li>
           <li>
             <a
-              href={'/ticket-collectors'}
+              href={'/new-ticket'}
               aria-label="Our product"
               title="Our product"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -148,7 +148,7 @@ function Navbar() {
                     </li>
                     <li>
                       <a
-                        href={"/ticket-collectors"}
+                        href={"/new-ticket"}
                         aria-label="Our product"
                         title="Our product"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"

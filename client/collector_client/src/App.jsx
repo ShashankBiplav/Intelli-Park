@@ -5,8 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
-// import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
-// import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
+import NewTicketComponent from "./components/NewTicketComponent/NewTicketComponent";
 
 function App() {
   const [user, setUser] = useState({
@@ -15,7 +14,9 @@ function App() {
     user: undefined,
     expiryTime: undefined,
     phone: undefined,
-    otp:undefined
+    otp:undefined,
+    vehicleNumber:"",
+    amount:undefined
   });
   useEffect(() => {
     //TODO: set timer in this function
@@ -75,8 +76,7 @@ function App() {
           <div className="flex flex-col h-screen justify-between">
             <Switch>
               <Route exact path="/" component={AllTicketsComponent}/>
-              {/*<ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>*/}
-              {/*<ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>*/}
+              <ProtectedRoute exact path="/new-ticket" component={NewTicketComponent}/>
             </Switch>
             <Footer />
           </div>
