@@ -6,7 +6,6 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
 import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
-import LoginComponent from "./components/LoginComponent/LoginComponent";
 
 function App() {
   const [user, setUser] = useState({
