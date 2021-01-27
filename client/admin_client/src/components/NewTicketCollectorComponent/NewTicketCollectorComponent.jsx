@@ -14,9 +14,8 @@ function NewTicketCollectorComponent() {
       return;
     }
     const url = "https://intelli-park.herokuapp.com/auth/ticket-collector/signup/phone";
-    let res;
     try {
-      res = await Axios.post(url, {
+       await Axios.post(url, {
         "phone": phone
       }, {
         headers: {

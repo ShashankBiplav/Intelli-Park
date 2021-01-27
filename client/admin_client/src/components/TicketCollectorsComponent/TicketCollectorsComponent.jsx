@@ -3,7 +3,6 @@ import UserContext from "../../context/UserContext";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import TicketCollectorComponent from "./TicketCollectorComponent";
 import Axios from "axios";
-import ParkingTicketComponent from "../AllTicketsComponent/ParkingTicketComponent";
 
 function TicketCollectorsComponent() {
   const {user} = useContext(UserContext);
@@ -20,7 +19,6 @@ function TicketCollectorsComponent() {
             'Authorization': 'Bearer ' + user.token
           }},
         );
-        console.log(res);
         setTicketCollectors(res.data.ticketCollectors);
         setIsLoading(false);
       } catch (err) {

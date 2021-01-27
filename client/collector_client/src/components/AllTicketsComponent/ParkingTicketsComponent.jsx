@@ -11,7 +11,7 @@ function ParkingTicketsComponent() {
   
   useEffect(() => {
     const fetchTickets = async () => {
-      const url = "https://intelli-park.herokuapp.com/administrator/tickets";
+      const url = "https://intelli-park.herokuapp.com/icket-collector/tickets";
       let res;
       try {
         res = await Axios.post(url, {},{headers: {

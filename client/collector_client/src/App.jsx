@@ -4,7 +4,7 @@ import UserContext from "./context/UserContext";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 // import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-// import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
+import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 // import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
 // import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
 
@@ -72,7 +72,7 @@ function App() {
           <Navbar/>
           <div className="flex flex-col h-screen justify-between">
             <Switch>
-              {/*<Route exact path="/" component={AllTicketsComponent}/>*/}
+              <Route exact path="/" component={AllTicketsComponent}/>
               {/*<ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>*/}
               {/*<ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>*/}
             </Switch>

@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import UserContext from "../../context/UserContext";
-import {Route, Redirect} from "react-router-dom";
+import {Route} from "react-router-dom";
 import LoginComponent from "../LoginComponent/LoginComponent";
 
 function ProtectedRoute({component: Component, ...rest}) {

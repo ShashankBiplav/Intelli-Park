@@ -28,7 +28,6 @@ function LoginComponent() {
           'content-type': 'application/json'
         }
       });
-      console.log(res);
     } catch (err) {
       alert(`Invalid credentials ${err.message}`);
       setIsLoading((isLoading) => !isLoading);

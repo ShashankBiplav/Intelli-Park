@@ -18,7 +18,6 @@ function TicketCollectorComponent(props) {
           'Authorization': 'Bearer ' + user.token
         }}
       );
-      console.log(res);
       alert(res.data.message);
       data.isAuthorized = !data.isAuthorized;
       setIsLoading(false);
@@ -30,8 +29,8 @@ function TicketCollectorComponent(props) {
   }
   
   return (
-    <div className= {`m-6 sm:w-full lg:w-1/5`}>
-      <div className={`rounded-lg shadow-lg overflow-hidden shadow max-w-full my-3 ${data.isVerified? "bg-green-300": "bg-red-200"} ${data.isAuthorized? "bg-green-900": "bg-red-300"}`}>
+    <div className= "m-6 object-cover object-center w-full lg:w-1/5">
+      <div className={`p-6 rounded-lg shadow-lg overflow-hidden shadow max-w-full my-3 ${data.isVerified? "bg-green-300": "bg-red-200"} ${data.isAuthorized? "bg-green-900": "bg-red-300"}`}>
         <div className="text-center px-3 pb-6 pt-2">
           <h3 className="text-white text-xl bold font-sans">Ticket Collector</h3>
           <p className="mt-2 font-sans font-light text-grey-dark">{data.phone}</p>
