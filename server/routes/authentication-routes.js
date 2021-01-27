@@ -11,6 +11,11 @@ router.post('/ticket-collector/signup/phone', [
   expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer")
 ], authController.ticketCollectorSignupUsingPhone);
 
+//TICKET COLLECTOR SIGNUP USING PHONE
+router.post('/ticket-collector/get-otp', [
+  expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer")
+], authController.ticketCollectorGetOtp);
+
 //TICKET COLLECTOR LOGIN USING PHONE
 router.post('/ticket-collector/login/phone', [
   expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer"), expressValidator.check('otp').trim().isInt().isLength({min: 6})

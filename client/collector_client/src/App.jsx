@@ -14,6 +14,8 @@ function App() {
     token: undefined,
     user: undefined,
     expiryTime: undefined,
+    phone: undefined,
+    otp:undefined
   });
   useEffect(() => {
     //TODO: set timer in this function

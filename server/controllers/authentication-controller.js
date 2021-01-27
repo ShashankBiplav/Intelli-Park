@@ -11,6 +11,8 @@ import TicketCollector from '../models/ticket-collector.js';
 //helpers
 import {userSignUpUsingPhone} from '../helpers/ticket-collector-signup-phone.js';
 
+import {ticketCollectorGetOtpToSignIn} from '../helpers/ticket-collector-get-otp.js';
+
 import {login} from '../helpers/ticket-collector-login-phone.js';
 
 import {validationErrorHandler} from '../helpers/validation-error-handler.js';
@@ -18,6 +20,10 @@ import {validationErrorHandler} from '../helpers/validation-error-handler.js';
 //ticket collector signup using phone
 export const ticketCollectorSignupUsingPhone = async (req, res, next) => {
   await userSignUpUsingPhone(req, res, next, TicketCollector);
+};
+
+export const ticketCollectorGetOtp = async (req, res, next) => {
+  await ticketCollectorGetOtpToSignIn(req, res,next, TicketCollector);
 };
 
 //ticket collector login using phone
