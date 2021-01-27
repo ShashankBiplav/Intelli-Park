@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState, useContext} from "react";
+import Axios from "axios";
+import UserContext from "../../context/UserContext";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
 
 function ParkingTicketComponent(props) {
+  const {user} = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
 const data = props.data;
+
+
   function getDateTime(date) {
     let parsedDate = new Date(date);
     return [
@@ -9,6 +17,26 @@ const data = props.data;
       parsedDate.getHours() + ':' + parsedDate.getMinutes()
     ];
   }
+  
+  const endTicket = async(ticketId) => {
+    setIsLoading(true);
+    const url = `https://intelli-park.herokuapp.com/ticket-collector/end-ticket/${ticketId}`;
+    let res;
+    try {
+      res = await Axios.put(url, {},{headers: {
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + user.token
+        }}
+      );
+      console.log(res.data.message);
+      data.isActive = !data.isActive;
+      setIsLoading(false);
+    } catch (err) {
+      alert(`ERROR! ${err.message}`);
+      setIsLoading(false);
+      return;
+    }
+  };
   
 return(
   <div className= {`m-6 sm:w-full lg:w-1/5  rounded-lg shadow-lg ${data.isActive? "bg-green-300": "bg-blue-200"}`}>
@@ -21,6 +49,9 @@ return(
       <p className="mb-4 text-base leading-relaxed">STARTING TIME: {getDateTime(data.startingTime)}</p>
       {data.isActive?<p className="mb-4 text-base leading-relaxed"> AMOUNT NOT COLLECTED YET</p>: <p className="mb-4 text-base leading-relaxed">COLLECTED BY: {data.collectedBy['phone']}</p>}
       <p className="mb-4 text-base leading-relaxed">VEHICLE TYPE: {data.vehicleType} Wheeler</p>
+      {data.isActive? isLoading ? <LoadingSpinner />
+        :<button onClick={() =>  endTicket(data._id)}
+                             className={"px-8 py-2 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg shadow-xl bg-gradient-to-r from-blue-700 hover:from-blue-600 to-blue-600 hover:to-blue-700 focus:ring focus:outline-none"}> END TICKET</button>:  null}
     </div>
   </div>
 );
