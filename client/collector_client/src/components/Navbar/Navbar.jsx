@@ -36,6 +36,16 @@ function Navbar() {
         {user.isAuth ?<ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
             <a
+              href={'/active-tickets'}
+              aria-label="Our product"
+              title="Our product"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            >
+              Active Tickets
+            </a>
+          </li>
+          <li>
+            <a
               href={'/'}
               aria-label="Our product"
               title="Our product"
@@ -136,6 +146,16 @@ function Navbar() {
                 </div>
                 <nav>
                   {user.isAuth?<ul className="space-y-4">
+                    <li>
+                      <a
+                        href={'/active-tickets'}
+                        aria-label="Our product"
+                        title="Our product"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      >
+                        Active Tickets
+                      </a>
+                    </li>
                     <li>
                       <a
                         href={"/"}
