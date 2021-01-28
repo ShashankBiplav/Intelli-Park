@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 import NewTicketComponent from "./components/NewTicketComponent/NewTicketComponent";
+import ActiveTicketsComponent from "./components/ActiveTicketsComponent/ActiveTicketsComponent";
 
 function App() {
   const [user, setUser] = useState({
@@ -77,6 +78,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={AllTicketsComponent}/>
               <ProtectedRoute exact path="/new-ticket" component={NewTicketComponent}/>
+              <ProtectedRoute exact path="/active-tickets" component={ActiveTicketsComponent}/>
             </Switch>
             <Footer />
           </div>
