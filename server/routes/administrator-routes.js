@@ -11,6 +11,9 @@ const router = express.Router();
 //GET ALL TICKET COLLECTORS
 router.get('/ticket-collectors',isAdmin, administratorController.getAllTicketCollectors);
 
+//GET ACTIVE TICKETS
+router.get('/active-tickets', isAdmin, administratorController.getActiveParkingTickets);
+
 //GET ALL AND PAGINATED +FILTERED TICKETS
 router.post('/tickets', isAdmin, administratorController.getAllParkingTickets);
 
