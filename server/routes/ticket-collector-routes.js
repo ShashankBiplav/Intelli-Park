@@ -20,4 +20,7 @@ router.put('/end-ticket/:ticketId', isTicketCollector, ticketCollectorController
 //GET ALL AND PAGINATED +FILTERED TICKETS
 router.post('/tickets', isTicketCollector, ticketCollectorController.getParkingTickets);
 
+//GET ACTIVE TICKETS
+router.get('/active-tickets', isTicketCollector, ticketCollectorController.getActiveParkingTickets);
+
 export default router;

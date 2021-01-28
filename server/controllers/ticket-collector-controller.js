@@ -120,3 +120,18 @@ export const getParkingTickets = async(req, res, next) => {
     next(err);
   }
 };
+
+export const getActiveParkingTickets= async (req, res, next) => {
+  try{
+    const parkingTickets = await ParkingTicket.find({isActive:{$eq: true}});
+    res.status(200).json({
+      message: "Active parking tickets fetched",
+      parkingTickets: parkingTickets
+    });
+  }catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
