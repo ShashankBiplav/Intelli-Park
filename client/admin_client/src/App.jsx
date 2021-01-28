@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComponent";
 import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
 import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
+import ActiveTicketsComponent from "./components/ActiveTicketsComponent/ActiveTicketsComponent";
 
 function App() {
   const [user, setUser] = useState({
@@ -75,6 +76,7 @@ function App() {
             <Route exact path="/" component={AllTicketsComponent}/>
             <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
             <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
+            <ProtectedRoute exact path="/active-tickets" component={ActiveTicketsComponent}/>
           </Switch>
           <Footer />
           </div>
