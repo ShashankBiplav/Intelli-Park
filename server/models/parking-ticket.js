@@ -38,6 +38,9 @@ const parkingTicketSchema = new Schema({
     phone: {
       type: Number,
     },
+    name:{
+      type:String
+    }
   },
   collectedBy:{
     _id: {
@@ -49,6 +52,10 @@ const parkingTicketSchema = new Schema({
       type: Number,
       default: null
     },
+    name:{
+      type: String,
+      default: null
+    }
   }
 },{
   timestamps: true

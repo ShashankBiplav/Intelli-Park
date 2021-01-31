@@ -25,7 +25,7 @@ export const createNewParkingTicket = async (req, res, next) => {
       error.statusCode = 403;
       return next(error);
     }
-    const createdBy = {_id: ticketCollector._id, phone: ticketCollector.phone};
+    const createdBy = {_id: ticketCollector._id, phone: ticketCollector.phone, name: ticketCollector.name};
     const parkingTicket = new ParkingTicket({
       vehicleNumber: vehicleNumber,
       startingTime:new Date().toISOString(),
@@ -69,7 +69,7 @@ export const endParkingTicket = async (req, res, next) => {
     parkingTicket.isAmountCollected = true;
     parkingTicket.isActive = false;
     parkingTicket.endingTime = new Date().toISOString();
-    parkingTicket.collectedBy = {_id: ticketCollector._id, phone: ticketCollector.phone};
+    parkingTicket.collectedBy = {_id: ticketCollector._id, phone: ticketCollector.phone, name: ticketCollector.name};
     const result = await parkingTicket.save();
     res.status(201).json({
       message: 'parking ticket ended',
