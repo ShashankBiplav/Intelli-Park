@@ -2,23 +2,32 @@ import jwt from 'jsonwebtoken';
 
 import {validationErrorHandler} from './validation-error-handler.js';
 import {checkTimeValidity} from "./check-time.js";
+import bcrypt from "bcryptjs";
 
 export const login = async (req, res, next, Model) => {
   validationErrorHandler(req, next);
-  const {phone, otp} = req.body;
-  if (!phone || !otp) {
-    return;
-  }
+  const {phone, password} = req.body;
   try {
-    const user = await Model.findOne({phone: phone, otp: otp});
-    if (user.isAuthorized ===false){
+    const user = await Model.findOne({phone: phone});
+    if (!user) {
+      const error = new Error('User with this email doesn\'t exist');
+      error.statusCode = 404;
+      throw error;
+    }
+    if (user.isAuthorized === false) {
       const error = new Error('Not Authorized! Contact Admin for support');
       error.statusCode = 403;
       return next(error);
     }
-    const isTimeValid =  await checkTimeValidity();
-    if (!isTimeValid){
+    const isTimeValid = await checkTimeValidity();
+    if (!isTimeValid) {
       const error = new Error('Invalid time');
+      error.statusCode = 403;
+      return next(error);
+    }
+    const isPwdEqual = await bcrypt.compare(password, user.password);
+    if (!isPwdEqual) {
+      const error = new Error('Wrong Password');
       error.statusCode = 403;
       return next(error);
     }

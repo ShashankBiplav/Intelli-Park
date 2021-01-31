@@ -26,7 +26,7 @@ export const ticketCollectorGetOtp = async (req, res, next) => {
   await ticketCollectorGetOtpToSignIn(req, res,next, TicketCollector);
 };
 
-//ticket collector login using phone
+//ticket collector login using phone and password
 export const ticketCollectorLoginUsingPhone = async (req, res, next) => {
   await login(req, res, next, TicketCollector);
 };
@@ -70,7 +70,7 @@ export const administratorLogin = async (req, res, next) => {
     const admin = await Administrator.findOne({email: email});
     if (!admin) {
       const error = new Error('Admin with this email doesn\'t exist');
-      error.statusCode = 401;
+      error.statusCode = 404;
       throw error;
     }
     loadedAdmin = admin;

@@ -24,7 +24,9 @@ function NewTicketCollectorComponent() {
     const url = "https://intelli-park.herokuapp.com/auth/ticket-collector/signup/phone";
     try {
       await Axios.post(url, {
-        "phone": phone
+        "phone": phone,
+        "name": name,
+        "password": password
       }, {
         headers: {
           'content-type': 'application/json'

@@ -4,21 +4,26 @@ import expressValidator from 'express-validator';
 
 import * as authController from '../controllers/authentication-controller.js';
 
+import {isAdmin} from '../middleware/is-admin.js';
+
 const router = express.Router();
 
-//TICKET COLLECTOR SIGNUP USING PHONE
-router.post('/ticket-collector/signup/phone', [
-  expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer")
+//TICKET COLLECTOR SIGNUP USING PHONE AND PASSWORD
+router.post('/ticket-collector/signup/phone',isAdmin, [
+  expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer"),
+  expressValidator.check('name').not().isEmpty(),
+  expressValidator.check('password').not().isEmpty().isLength({min:6}),
 ], authController.ticketCollectorSignupUsingPhone);
 
-//TICKET COLLECTOR SIGNUP USING PHONE
+//TICKET COLLECTOR GET OTP TO SIGN IN
 router.post('/ticket-collector/get-otp', [
   expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer")
 ], authController.ticketCollectorGetOtp);
 
 //TICKET COLLECTOR LOGIN USING PHONE
 router.post('/ticket-collector/login/phone', [
-  expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer"), expressValidator.check('otp').trim().isInt().isLength({min: 6})
+  expressValidator.check('phone').trim().isInt().isLength({min: 10}).withMessage("Phone must be an integer"),
+  expressValidator.check('password').not().isEmpty().isLength({min: 6})
 ], authController.ticketCollectorLoginUsingPhone);
 
 //ADMINISTRATOR SIGNUP
