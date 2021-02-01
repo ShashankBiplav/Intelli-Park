@@ -11,7 +11,8 @@ const router = express.Router();
 //CREATE A NEW TICKET
 router.post('/create-ticket', isTicketCollector, [
   expressValidator.check('vehicleNumber').not().isEmpty(),
-  expressValidator.check('amount').not().isEmpty()
+  expressValidator.check('amount').not().isEmpty(),
+  expressValidator.check('vehicleType').not().isEmpty().isInt(),
 ], ticketCollectorController.createNewParkingTicket);
 
 //END EXISTING TICKET

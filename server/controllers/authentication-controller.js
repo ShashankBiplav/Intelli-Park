@@ -15,6 +15,8 @@ import {ticketCollectorGetOtpToSignIn} from '../helpers/ticket-collector-get-otp
 
 import {login} from '../helpers/ticket-collector-login-phone.js';
 
+import {loginWithOtp} from '../helpers/ticket-collector-login-otp.js';
+
 import {validationErrorHandler} from '../helpers/validation-error-handler.js';
 
 //ticket collector signup using phone
@@ -27,8 +29,13 @@ export const ticketCollectorGetOtp = async (req, res, next) => {
 };
 
 //ticket collector login using phone and password
-export const ticketCollectorLoginUsingPhone = async (req, res, next) => {
+export const ticketCollectorLoginUsingPhoneAndPassword = async (req, res, next) => {
   await login(req, res, next, TicketCollector);
+};
+
+//ticket collector login using phone and otp
+export const ticketCollectorLoginUsingPhoneAndOtp = async (req, res, next) => {
+  await loginWithOtp(req, res, next, TicketCollector);
 };
 
 //admin signup

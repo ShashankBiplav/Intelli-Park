@@ -11,8 +11,13 @@ import {checkTimeValidity} from '../helpers/check-time.js';
 //create a new ticket
 export const createNewParkingTicket = async (req, res, next) => {
   validationErrorHandler(req, next);
-  const {vehicleNumber, amount } = req.body;
+  const {vehicleNumber, amount, vehicleType} = req.body;
   try{
+    if (vehicleType!==2 || vehicleType!==4){
+      const error = new Error('Inappropriate vehicle');
+      error.statusCode = 403;
+      return next(error);
+    }
     const ticketCollector = await TicketCollector.findById(req.userId);
     if (ticketCollector.isVerified === false || ticketCollector.isAuthorized === false){
       const error = new Error('Not Authorized');
@@ -30,6 +35,7 @@ export const createNewParkingTicket = async (req, res, next) => {
       vehicleNumber: vehicleNumber,
       startingTime:new Date().toISOString(),
       amount: amount,
+      vehicleType: vehicleType,
       createdBy: createdBy
     });
     const result = await parkingTicket.save();
