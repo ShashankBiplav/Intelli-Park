@@ -46,6 +46,12 @@ router.post('/administrator/login', [expressValidator.check('email').isEmail().n
     })],
   authController.administratorLogin);
 
+//TICKET COLLECTOR RESET PASSWORD
+router.post('/ticket-collector/reset-password',isAdmin, [expressValidator.check('phone').not().isEmpty().isLength({min:10}),
+  expressValidator.check('password').trim().isLength({
+    min: 6
+  })], authController.resetTicketCollectorPassword);
+
 //ADMINISTRATOR RESET PASSWORD
 router.post('/administrator/reset-password',
   [expressValidator.check('email').isEmail().normalizeEmail(),

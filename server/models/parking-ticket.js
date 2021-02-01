@@ -11,6 +11,10 @@ const parkingTicketSchema = new Schema({
     type: Number,
     default: 2
   },
+  ownerPhone:{
+    type: Number,
+    required: true
+  },
   startingTime:{
     type: Date,
     required: true

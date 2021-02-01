@@ -25,7 +25,7 @@ export const ticketCollectorSignupUsingPhone = async (req, res, next) => {
 };
 
 export const ticketCollectorGetOtp = async (req, res, next) => {
-  await ticketCollectorGetOtpToSignIn(req, res,next, TicketCollector);
+  await ticketCollectorGetOtpToSignIn(req, res, next, TicketCollector);
 };
 
 //ticket collector login using phone and password
@@ -105,11 +105,35 @@ export const administratorLogin = async (req, res, next) => {
   }
 };
 
+//function to reset ticket collector password
+export const resetTicketCollectorPassword = async (req, res, next) => {
+  validationErrorHandler(req, next);
+  const {phone, password} = req.body;
+  try {
+    const ticketCollector = await TicketCollector.findOne({phone: phone});
+    if (!ticketCollector) {
+      const error = new Error('Ticket Collector with this phone number doesn\'t exist');
+      error.statusCode = 404;
+      throw error;
+    }
+    const hashedPassword = await bcrypt.hash(password, 12);
+    ticketCollector.password = hashedPassword;
+    await ticketCollector.save();
+    res.status(201).json({
+      message: 'Password Updated!',
+    });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
 //function to reset admin password
 export const resetAdminPassword = async (req, res, next) => {
   validationErrorHandler(req, next);
   const {email, otp, password} = req.body;
-  
   try {
     const admin = await Administrator.findOne({
       resetToken: otp,
@@ -120,7 +144,7 @@ export const resetAdminPassword = async (req, res, next) => {
     })
     if (!admin) {
       const error = new Error('Admin with this email doesn\'t exist');
-      error.statusCode = 401;
+      error.statusCode = 404;
       throw error;
     }
     const hashedPassword = await bcrypt.hash(password, 12);

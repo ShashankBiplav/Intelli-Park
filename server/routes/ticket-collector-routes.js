@@ -13,6 +13,7 @@ router.post('/create-ticket', isTicketCollector, [
   expressValidator.check('vehicleNumber').not().isEmpty(),
   expressValidator.check('amount').not().isEmpty(),
   expressValidator.check('vehicleType').not().isEmpty().isInt(),
+  expressValidator.check('ownerPhone').not().isEmpty().isInt().isLength({min:10}),
 ], ticketCollectorController.createNewParkingTicket);
 
 //END EXISTING TICKET
