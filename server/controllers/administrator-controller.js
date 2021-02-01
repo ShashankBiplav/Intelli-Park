@@ -43,7 +43,7 @@ export const getAllParkingTickets = async (req, res, next) => {
 //get active parking tickets
 export const getActiveParkingTickets= async (req, res, next) => {
   try{
-    const parkingTickets = await ParkingTicket.find({isActive:{$eq: true}});
+    const parkingTickets = await ParkingTicket.find({isActive:{$eq: true}}).sort({createdAt: -1});
     res.status(200).json({
       message: "Active parking tickets fetched",
       parkingTickets: parkingTickets
