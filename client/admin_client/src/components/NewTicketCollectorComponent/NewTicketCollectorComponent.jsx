@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import Axios from "axios";
+import UserContext from "../../context/UserContext";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 function NewTicketCollectorComponent() {
+  const {user} = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   //login admin
   const createNewTicketCollector = async () => {
@@ -29,7 +31,8 @@ function NewTicketCollectorComponent() {
         "password": password
       }, {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+          'Authorization': 'Bearer ' + user.token
         }
       });
       alert('Ticket Collector Added');
