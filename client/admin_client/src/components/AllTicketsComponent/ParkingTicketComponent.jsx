@@ -21,7 +21,7 @@ return(
       <p className="mb-4 text-base leading-relaxed">CREATED BY: <br/> {data.createdBy['name']} | {data.createdBy['phone']}</p>
       <p className="mb-4 text-base leading-relaxed">STARTING TIME: <br/> {getDateTime(data.startingTime)}</p>
       {!data.isActive?<p className="mb-4 text-base leading-relaxed">ENDING TIME: <br/> {getDateTime(data.endingTime)}</p> : null}
-      {data.isActive?<p className="mb-4 text-base leading-relaxed"> AMOUNT NOT COLLECTED YET</p>: <p className="mb-4 text-base leading-relaxed">COLLECTED BY: <br/> {data.collectedBy['name']} | {data.collectedBy['phone']}</p>}
+      {data.isActive?<p className="mb-4 text-base leading-relaxed"> AMOUNT NOT COLLECTED</p>: <p className="mb-4 text-base leading-relaxed">COLLECTED BY: <br/> {data.collectedBy['name']} | {data.collectedBy['phone']}</p>}
       <p className="mb-4 text-base leading-relaxed">VEHICLE TYPE: {data.vehicleType} Wheeler</p>
     </div>
   </div>

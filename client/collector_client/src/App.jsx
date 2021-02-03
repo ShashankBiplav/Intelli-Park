@@ -17,6 +17,8 @@ function App() {
     phone: undefined,
     password:undefined,
     vehicleNumber:"",
+    vehicleType:undefined,
+    ownerPhone: undefined,
     amount:undefined
   });
   useEffect(() => {

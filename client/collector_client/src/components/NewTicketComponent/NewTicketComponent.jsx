@@ -10,22 +10,28 @@ function NewTicketComponent(){
   const createTicket = async () => {
     setIsLoading(true);
     const vehicleNumber = document.getElementById("vehicleNumber").value;
+    const vehicleType = document.getElementById("vehicleType").value;
+    const ownerPhone = document.getElementById("ownerPhone").value;
     const amount = document.getElementById("amount").value;
-    setUser({
-      ...user,
-      vehicleNumber: vehicleNumber,
-      amount:amount
-    });
-    if (!amount || !vehicleNumber){
+    if (!amount || !vehicleNumber || !ownerPhone || !vehicleType){
       alert("Empty");
       setIsLoading(false);
       return;
     }
+    setUser({
+      ...user,
+      vehicleNumber: vehicleNumber,
+      vehicleType: vehicleType,
+      ownerPhone: ownerPhone,
+      amount:amount
+    });
     const url = "https://intelli-park.herokuapp.com/ticket-collector/create-ticket";
     try {
       await Axios.post(url, {
-        "vehicleNumber": vehicleNumber,
-        "amount": amount
+        "vehicleNumber": user.vehicleNumber,
+        "vehicleType": parseInt(user.vehicleType),
+        "ownerPhone": user.ownerPhone,
+        "amount": user.amount
       }, {
         headers: {
           'content-type': 'application/json',
@@ -42,6 +48,8 @@ function NewTicketComponent(){
     setUser({
       ...user,
       vehicleNumber: "",
+      vehicleType: undefined,
+      ownerPhone: undefined,
       amount:0
     });
   };
@@ -54,6 +62,18 @@ function NewTicketComponent(){
         setUser({
           ...user,
           vehicleNumber: value
+        });
+        break;
+        case "vehicleType":
+        setUser({
+          ...user,
+          vehicleType: value
+        });
+        break;
+        case "ownerPhone":
+        setUser({
+          ...user,
+          ownerPhone: value
         });
         break;
       case "amount":
@@ -75,8 +95,17 @@ function NewTicketComponent(){
           <div className="relative ">
             <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="VEHICLE NUMBER" value={user.vehicleNumber} onChange={inputHandler}
                    className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
-          </div><div className="relative ">
-            <input type="number" id="amount" name="amount" placeholder="₹ 25" value={user.amount} onChange={inputHandler}
+          </div>
+          <div className="relative ">
+            <input type="number" id="vehicleType" name="vehicleType" placeholder="2/4 Wheeler" value={user.vehicleType} onChange={inputHandler}
+                   className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
+          </div>
+          <div className="relative ">
+            <input type="number" id="ownerPhone" name="ownerPhone" placeholder="Owner Phone Number" value={user.ownerPhone} onChange={inputHandler}
+                   className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
+          </div>
+          <div className="relative ">
+            <input type="number" id="amount" name="amount" placeholder="₹ 25 / ₹ 40" value={user.amount} onChange={inputHandler}
                    className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
           </div>
           {!isLoading ?<button onClick={()=>createTicket()}
