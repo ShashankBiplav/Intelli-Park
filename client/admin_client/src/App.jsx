@@ -8,6 +8,7 @@ import AllTicketsComponent from "./components/AllTicketsComponent/AllTicketsComp
 import NewTicketCollectorComponent from "./components/NewTicketCollectorComponent/NewTicketCollectorComponent";
 import TicketCollectorsComponent from "./components/TicketCollectorsComponent/TicketCollectorsComponent";
 import ActiveTicketsComponent from "./components/ActiveTicketsComponent/ActiveTicketsComponent";
+import ResetPasswordComponent from "./components/ResetPasswordComponent/ResetPasswordComponent";
 
 function App() {
   const [user, setUser] = useState({
@@ -77,6 +78,7 @@ function App() {
             <ProtectedRoute exact path="/ticket-collectors" component={TicketCollectorsComponent}/>
             <ProtectedRoute exact path="/new-ticket-collector" component={NewTicketCollectorComponent}/>
             <ProtectedRoute exact path="/active-tickets" component={ActiveTicketsComponent}/>
+            <ProtectedRoute exact path="/reset-password" component={ResetPasswordComponent}/>
           </Switch>
           <Footer />
           </div>

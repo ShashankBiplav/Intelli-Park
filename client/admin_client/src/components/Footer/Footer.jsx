@@ -9,6 +9,8 @@ function Footer() {
             <a href="https://dailysho.com" className="mr-5 text-sm text-center text-gray-200"> Powered By DAILYSHO LABS
               ©
             </a>
+            <a href={'/reset-password'} className="mr-5 text-sm text-center text-gray-200"> Reset Ticket Collector Password
+            </a>
           </div>
           <span className="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-end">
             <p className="mr-5 text-sm text-center text-gray-200">INTELLI PARK - Making parking systems Intelligent</p>
