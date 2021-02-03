@@ -25,7 +25,6 @@ function ActiveTicketsComponent() {
       } catch (err) {
         alert(`Unable to fetch ${err.message}`);
         setIsLoading((isLoading) => !isLoading);
-        return;
       }
     }
     fetchActiveTickets();
@@ -48,7 +47,6 @@ function ActiveTicketsComponent() {
     } catch (err) {
       alert(`ERROR! ${err.message}`);
       setIsLoading(false);
-      return;
     }
   };
   
