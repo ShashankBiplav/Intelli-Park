@@ -15,7 +15,7 @@ function App() {
     user: undefined,
     expiryTime: undefined,
     phone: undefined,
-    otp:undefined,
+    password:undefined,
     vehicleNumber:"",
     amount:undefined
   });
