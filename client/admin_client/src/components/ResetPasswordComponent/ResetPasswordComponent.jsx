@@ -48,11 +48,11 @@ function ResetPasswordComponent() {
         <div
           className="flex flex-col w-full p-8 mx-auto mt-10 border rounded-lg lg:w-2/6 md:w-1/2 md:ml-auto md:mt-0">
           <div className="relative ">
-            <input type="number" id="phone" name="phone" placeholder="Phone Number"
+            <input type="number" id="phone" name="phone" placeholder="Ticket Collector's Phone Number"
                    className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
           </div>
           <div className="relative ">
-            <input type="password" id="password" name="password" placeholder="Password"
+            <input type="password" id="password" name="password" placeholder="New Password"
                    className="w-full px-4 py-2 mb-4 mr-4 text-base text-blue-700 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"/>
           </div>
           <div className="relative ">
