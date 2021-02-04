@@ -12,6 +12,12 @@ All the backend code can be found in `/server` directory. For more details navig
 https://intelli-park.herokuapp.com/
 ```
 
+### ENDPOINTS DOCUMENTATION
+
+```
+https://documenter.getpostman.com/view/11888806/TW6uppf6
+```
+
 ## CLIENTS
 
 There are 3 front-end **React** apps connected to the server. All the client-side code can be found in `/clients` directory. For more details navigate to `CLIENT.md` file in the project root.
