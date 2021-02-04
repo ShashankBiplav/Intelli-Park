@@ -17,6 +17,7 @@ https://intelli-park.herokuapp.com/
 ```
 https://documenter.getpostman.com/view/11888806/TW6uppf6
 ```
+or, click [HERE](https://documenter.getpostman.com/view/11888806/TW6uppf6).
 
 ## CLIENTS
 
