@@ -48,3 +48,5 @@ https://intelli-view.vercel.app/
 This repository is open to **PR's**. All you have to do is to follow the directory structure of the project.
 
 > Please follow the directory structure when making a Pull Request. Individual app PR's like seperate Client and Server PR's won't be accepted. All **Contributors** are welcome and **KUDOS** in advance for improving the app!
+
+> Valid PR's are accepted within 24 to 48 hours after review😁.
