@@ -1,6 +1,6 @@
 # INTELLI-PARK
 
-## Making Boring Parking lots management Intelligent
+## Managing parking lots Intelligently
 
 ## SERVER
 
