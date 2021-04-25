@@ -6,12 +6,6 @@
 
 All the backend code can be found in `/server` directory. For more details navigate to `SERVER.md` file in the project root.
 
-### SERVER LIVE DEMO URL
-
-```
-https://intelli-park.herokuapp.com/
-```
-
 ### ENDPOINTS DOCUMENTATION
 
 ```
