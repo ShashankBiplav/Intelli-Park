@@ -1,11 +1,5 @@
 # SERVER
 
-### LIVE TEST URL
-
-```
-https://intelli-park.herokuapp.com/
-```
-
 ### LOCALHOST DEFAULT URL
 
 ```
